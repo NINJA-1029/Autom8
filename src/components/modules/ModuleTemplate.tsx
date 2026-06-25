@@ -7,8 +7,10 @@ import { validateAutomaton } from '../../engines/validationEngine';
 import { Automaton } from '../../types/automata';
 import { AlertCircle, HelpCircle, BookOpen, Layers, Cpu, HelpCircle as HelpIcon, ShieldAlert } from 'lucide-react';
 
+/** Props for the ModuleTemplate component — wraps a full course module with tabs for overview, learn, simulator, and practice. */
 interface ModuleTemplateProps {
   module: ModuleData;
+  /** Optional callback to send a topic explanation to the AI Tutor view for narration. */
   onNarrationRequest?: (stepExplanation: string) => void;
 }
 

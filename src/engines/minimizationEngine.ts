@@ -1,5 +1,11 @@
 import { Automaton } from '../types/automata';
 
+/**
+ * minimizationEngine.ts
+ * Implements the Table-Filling (Myhill-Nerode) algorithm for DFA minimization.
+ * Iteratively marks distinguishable state pairs and merges equivalent states
+ * to produce the unique canonical minimum-state DFA.
+ */
 // Table Filling Algorithm for DFA Minimization
 export interface TableMinimizationStep {
   matrix: Record<string, Record<string, boolean>>; // stateId1 -> stateId2 -> isDistinguishable

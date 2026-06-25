@@ -23,7 +23,7 @@ export const AITutorView: React.FC<AITutorViewProps> = ({
     if (systemNarrationText) {
       setMessages(prev => [
         ...prev,
-        { role: 'assistant', text: `Simulation state snapshot:\n\n${systemNarrationText}` }
+        { role: 'assistant', text: `📡 **Simulator Narration**\n\n${systemNarrationText}` }
       ]);
       if (onClearNarration) onClearNarration();
     }

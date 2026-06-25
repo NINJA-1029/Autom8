@@ -3,6 +3,7 @@ export interface QuestionOption {
   text: string;
 }
 
+/** A single practice question tied to a module, with hints and per-option explanations. */
 export interface PracticeQuestion {
   id: string;
   moduleId: string;

@@ -1,3 +1,9 @@
+/**
+ * conversionEngine.ts
+ * Implements formal automata conversion algorithms:
+ *  - NFA → DFA (Subset / Powerset Construction)
+ *  - DFA → Regex (State Elimination / Brzozowski algebraic method)
+ */
 import { Automaton } from '../types/automata';
 import { epsilonClosure } from './automataSimulators';
 
