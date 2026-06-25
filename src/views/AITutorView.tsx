@@ -31,6 +31,7 @@ export const AITutorView: React.FC<AITutorViewProps> = ({
 
   const saveConfig = () => {
     localStorage.setItem('automata_ai_key', apiKey);
+    localStorage.setItem('automata_ai_provider', provider);
     alert('API Key Configuration Saved Client-Side!');
   };
 

@@ -4,11 +4,12 @@ import { GraphEditor } from '../components/editor/GraphEditor';
 import { convertNFAtoDFA } from '../engines/conversionEngine';
 import { minimizeDFATableFilling } from '../engines/minimizationEngine';
 import { convertToCNF } from '../engines/grammarEngine';
+import { TMSimulator } from '../components/simulators/TMSimulator';
 import { CFG, Automaton } from '../types/automata';
-import { Layers, ChevronLeft, ChevronRight, Play, RotateCcw } from 'lucide-react';
+import { Layers, ChevronLeft, ChevronRight, Play, RotateCcw, Cpu } from 'lucide-react';
 
 export const SimulatorsView: React.FC = () => {
-  const [activeSubTab, setActiveSubTab] = useState<'regex' | 'conversions' | 'minimization' | 'cnf'>('regex');
+  const [activeSubTab, setActiveSubTab] = useState<'regex' | 'conversions' | 'minimization' | 'cnf' | 'turing'>('regex');
 
   // Regex state
   const [regexInput, setRegexInput] = useState<string>('(a|b)*abb');
@@ -108,7 +109,7 @@ export const SimulatorsView: React.FC = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <div className="glass-panel" style={{ padding: '20px' }}>
         <h2 style={{ fontSize: '20px', fontWeight: 700 }}>Interactive Simulators Hub</h2>
-        <div style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
+        <div style={{ display: 'flex', gap: '8px', marginTop: '16px', flexWrap: 'wrap' }}>
           {(['regex', 'conversions', 'minimization', 'cnf'] as const).map(tab => (
             <button
               key={tab}
@@ -122,6 +123,18 @@ export const SimulatorsView: React.FC = () => {
               {tab.toUpperCase()}
             </button>
           ))}
+          {/* Turing Machine tab */}
+          <button
+            onClick={() => setActiveSubTab('turing')}
+            className="btn-secondary"
+            style={{
+              backgroundColor: activeSubTab === 'turing' ? 'var(--accent-color)' : 'var(--bg-tertiary)',
+              color: activeSubTab === 'turing' ? 'white' : 'var(--text-primary)',
+              display: 'flex', alignItems: 'center', gap: '6px'
+            }}
+          >
+            <Cpu size={14} /> TURING
+          </button>
         </div>
       </div>
 
@@ -277,6 +290,9 @@ export const SimulatorsView: React.FC = () => {
           )}
         </div>
       )}
+
+      {/* 5. TURING MACHINE BUILDER */}
+      {activeSubTab === 'turing' && <TMSimulator />}
     </div>
   );
 };
